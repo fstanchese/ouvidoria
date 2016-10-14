@@ -61,7 +61,7 @@ public class UsuarioServiceTest {
 		
 		usuario.setArea(area);
 		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@gmail.com");
+		usuario.setEmail("fstanchese@ig.com");
 		usuario.setLogin("stanchese");
 		usuario.setNome("Fernando F Stanchese");
 		usuario.setSenha("123456");

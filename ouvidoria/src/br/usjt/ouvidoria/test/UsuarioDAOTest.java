@@ -44,6 +44,8 @@ public class UsuarioDAOTest {
 		Assert.assertNotNull(usuarioSalvo);
 	}
 	
+	@Transactional
+	@Test
 	public void excluirTest() {
 		Usuario usuario = new Usuario();
 		Area area = new Area();

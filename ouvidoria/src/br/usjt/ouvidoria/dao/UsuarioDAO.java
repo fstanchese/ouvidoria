@@ -17,25 +17,28 @@ public class UsuarioDAO {
 
 	public Usuario buscaLoginUsuario(Usuario usuario) {
 		try {
-			return (Usuario) em.createNamedQuery("Usuario.buscaUsuario").
-					setParameter("login", usuario.getLogin()).
-					setParameter("senha", usuario.getSenha()).getSingleResult();
+			return (Usuario) em.createNamedQuery("Usuario.buscaUsuario").setParameter("login", usuario.getLogin())
+					.setParameter("senha", usuario.getSenha()).getSingleResult();
 		} catch (NoResultException nre) {
 			return new Usuario();
 		}
 	}
-	
+
 	public Usuario buscaLogin(String login) {
-		Query q = em.createQuery("select u from Usuario u where login=:login");
-		q.setParameter("login", login);
-		q.setMaxResults(1);
-		return (Usuario) q.getSingleResult();
+		try {
+			Query q = em.createQuery("select u from Usuario u where login=:login");
+			q.setParameter("login", login);
+			q.setMaxResults(1);
+			return (Usuario) q.getSingleResult();
+		} catch (NoResultException nre) {
+			return new Usuario();
+		}
 	}
 
 	public Usuario salvar(Usuario usuario) {
 		return em.merge(usuario);
 	}
-	
+
 	public void excluir(Usuario usuario) {
 		em.remove(usuario);
 	}
