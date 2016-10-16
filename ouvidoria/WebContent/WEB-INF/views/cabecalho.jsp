@@ -6,7 +6,7 @@
 				<div class="container menu-topo">   
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-							<span class="sr-only">Menu de navegação</span>
+							<span class="sr-only">Menu de navegaÃ§Ã£o</span>
 							<span class="glyphicon glyphicon-menu-hamburger">
 							</span>
 						</button>
@@ -15,7 +15,7 @@
 					<c:if test="${empty usuarioLogado}">
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#">Cadastre-se <i class="glyphicon glyphicon-edit"></i></a></li>
+							<li><a href="${path}/cadastro">Cadastre-se <i class="glyphicon glyphicon-edit"></i></a></li>
 							<li><a href="${path}/loginForm">Entrar <i class="glyphicon glyphicon-log-in"></i></a></li>
 						</ul>
 					</div>
