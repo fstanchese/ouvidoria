@@ -42,11 +42,11 @@ public class Sugestao implements Serializable {
 	private String descricao;
 	
 	@Temporal(value=TemporalType.TIMESTAMP)
-	@Column(name="datasugestao", nullable = true)
+	@Column(name="datasugestao", nullable = false)
 	private Date dataSugestao;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="datamural", nullable = false)
+	@Column(name="datamural", nullable = true)
 	private Date dataMural;
 	
 	@Column(name="imagem",length = 20971520)

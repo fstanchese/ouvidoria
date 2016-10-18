@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import br.usjt.ouvidoria.dao.AreaDAO;
 import br.usjt.ouvidoria.dao.UsuarioDAO;
 import br.usjt.ouvidoria.model.Area;
 import br.usjt.ouvidoria.model.TipoUsuario;
@@ -23,20 +24,24 @@ public class UsuarioDAOTest {
 	@Autowired
 	UsuarioDAO usuarioDAO;
 	
+	@Autowired
+	AreaDAO areaDAO;
+	
 	@Transactional
 	@Test
 	public void salvarTest() {
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
-		area.setId(1L);
-		area.setDescricao("Area 1");
+		area.setDescricao("teste");
 		
-		usuario.setArea(area);
-		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@gmail.com");
-		usuario.setLogin("fstanchese");
-		usuario.setNome("Fernando F Stanchese");
+		Area areaSalvo = areaDAO.salvar(area);	
+		
+		usuario.setArea(areaSalvo);
+		usuario.setCelular("11 111111111");
+		usuario.setEmail("teste@teste.com");
+		usuario.setLogin("teste");
+		usuario.setNome("teste teste");
 		usuario.setSenha("123456");
 		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);
 		
@@ -50,14 +55,15 @@ public class UsuarioDAOTest {
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
-		area.setId(1L);
-		area.setDescricao("Area 1");
+		area.setDescricao("teste");
 		
-		usuario.setArea(area);
-		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@gmail.com");
-		usuario.setLogin("fstanchese");
-		usuario.setNome("Fernando F Stanchese");
+		Area areaSalvo = areaDAO.salvar(area);	
+		
+		usuario.setArea(areaSalvo);
+		usuario.setCelular("11 111111111");
+		usuario.setEmail("teste@teste.com");
+		usuario.setLogin("teste");
+		usuario.setNome("teste teste");
 		usuario.setSenha("123456");
 		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);
 		

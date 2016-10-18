@@ -12,7 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import br.usjt.ouvidoria.dao.AreaDAO;
 import br.usjt.ouvidoria.dao.SugestaoDAO;
+import br.usjt.ouvidoria.dao.UsuarioDAO;
 import br.usjt.ouvidoria.model.Area;
 import br.usjt.ouvidoria.model.Status;
 import br.usjt.ouvidoria.model.Sugestao;
@@ -25,8 +27,14 @@ import br.usjt.ouvidoria.model.Usuario;
 public class SugestaoDAOTest {
 
 	@Autowired
-	SugestaoDAO sugestaoDAO;
+	AreaDAO areaDAO;
 	
+	@Autowired
+	UsuarioDAO usuarioDAO;
+	
+	@Autowired
+	SugestaoDAO sugestaoDAO;
+
 	@Transactional
 	@Test
 	public void salvarTest() {
@@ -34,24 +42,24 @@ public class SugestaoDAOTest {
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
-		area.setId(1L);
 		area.setDescricao("Area 1");
-		
+		Area areaSalvo = areaDAO.salvar(area);	
+	
 		usuario.setArea(area);
-		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@gmail.com");
-		usuario.setLogin("fstanchese");
-		usuario.setNome("Fernando F Stanchese");
+		usuario.setCelular("11 111111111");
+		usuario.setEmail("teste@teste");
+		usuario.setLogin("teste");
+		usuario.setNome("teste");
 		usuario.setSenha("123456");
-		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);		
-		usuario.setId(1L);
+		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);
 		
-		sugestao.setArea(area);
-		sugestao.setDataMural(new Date());
+		Usuario usuarioSalvo = usuarioDAO.salvar(usuario);	
+		
+		sugestao.setArea(areaSalvo);
 		sugestao.setDataSugestao(new Date());
 		sugestao.setDescricao("descricao");
 		sugestao.setStatus(Status.ABERTO);
-		sugestao.setUsuario(usuario);
+		sugestao.setUsuario(usuarioSalvo);
 		
 		Sugestao sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
 		Assert.assertNotNull(sugestaoSalvo);
@@ -64,24 +72,24 @@ public class SugestaoDAOTest {
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
-		area.setId(1L);
 		area.setDescricao("Area 1");
-		
+		Area areaSalvo = areaDAO.salvar(area);	
+	
 		usuario.setArea(area);
-		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@gmail.com");
-		usuario.setLogin("fstanchese");
-		usuario.setNome("Fernando F Stanchese");
+		usuario.setCelular("11 111111111");
+		usuario.setEmail("teste@teste");
+		usuario.setLogin("teste");
+		usuario.setNome("teste");
 		usuario.setSenha("123456");
-		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);		
-		usuario.setId(1L);
+		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);
 		
-		sugestao.setArea(area);
-		sugestao.setDataMural(new Date());
+		Usuario usuarioSalvo = usuarioDAO.salvar(usuario);	
+		
+		sugestao.setArea(areaSalvo);
 		sugestao.setDataSugestao(new Date());
 		sugestao.setDescricao("descricao");
 		sugestao.setStatus(Status.ABERTO);
-		sugestao.setUsuario(usuario);
+		sugestao.setUsuario(usuarioSalvo);
 		
 		Sugestao sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
 		Long id = sugestaoSalvo.getId();

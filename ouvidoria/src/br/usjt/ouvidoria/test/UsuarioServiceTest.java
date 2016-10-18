@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import br.usjt.ouvidoira.exception.ServiceException;
+import br.usjt.ouvidoria.dao.AreaDAO;
 import br.usjt.ouvidoria.dao.UsuarioDAO;
 import br.usjt.ouvidoria.model.Area;
 import br.usjt.ouvidoria.model.TipoUsuario;
@@ -27,6 +28,9 @@ public class UsuarioServiceTest {
 	
 	@Autowired 
 	UsuarioDAO usuarioDAO;
+
+	@Autowired
+	AreaDAO areaDAO;
 	
 	@Transactional
 	@Test(expected=ServiceException.class)
@@ -34,14 +38,15 @@ public class UsuarioServiceTest {
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
-		area.setId(1L);
-		area.setDescricao("Area 1");
+		area.setDescricao("teste");
 		
-		usuario.setArea(area);
-		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@gmail.com");
-		usuario.setLogin("fstanchese");
-		usuario.setNome("Fernando F Stanchese");
+		Area areaSalvo = areaDAO.salvar(area);	
+		
+		usuario.setArea(areaSalvo);
+		usuario.setCelular("11 111111111");
+		usuario.setEmail("teste@teste.com");
+		usuario.setLogin("teste");
+		usuario.setNome("teste teste");
 		usuario.setSenha("123456");
 		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);
 		
@@ -56,16 +61,17 @@ public class UsuarioServiceTest {
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
-		area.setId(1L);
-		area.setDescricao("Area 1");
+		area.setDescricao("teste");
 		
-		usuario.setArea(area);
-		usuario.setCelular("11 966256725");
-		usuario.setEmail("fstanchese@ig.com");
-		usuario.setLogin("stanchese");
-		usuario.setNome("Fernando F Stanchese");
+		Area areaSalvo = areaDAO.salvar(area);	
+		
+		usuario.setArea(areaSalvo);
+		usuario.setCelular("11 111111111");
+		usuario.setEmail("teste@teste.com");
+		usuario.setLogin("teste");
+		usuario.setNome("teste teste");
 		usuario.setSenha("123456");
-		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);		
+		usuario.setTipoUsuario(TipoUsuario.SUPERVISOR);
 		
 		Usuario usuarioSalvo = usuarioService.salvar(usuario);
 		
