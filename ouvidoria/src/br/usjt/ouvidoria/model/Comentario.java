@@ -43,7 +43,7 @@ public class Comentario implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "sugestao_id")
 	@JsonIgnore
-	private Sugestao sugestao;
+	private Postagem sugestao;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
@@ -74,11 +74,11 @@ public class Comentario implements Serializable {
 		this.dataComentario = dataComentario;
 	}
 
-	public Sugestao getSugestao() {
+	public Postagem getSugestao() {
 		return sugestao;
 	}
 
-	public void setSugestao(Sugestao sugestao) {
+	public void setSugestao(Postagem sugestao) {
 		this.sugestao = sugestao;
 	}
 

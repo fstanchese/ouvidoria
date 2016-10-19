@@ -13,18 +13,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import br.usjt.ouvidoria.dao.AreaDAO;
-import br.usjt.ouvidoria.dao.SugestaoDAO;
+import br.usjt.ouvidoria.dao.PostagemDAO;
 import br.usjt.ouvidoria.dao.UsuarioDAO;
 import br.usjt.ouvidoria.model.Area;
 import br.usjt.ouvidoria.model.Status;
-import br.usjt.ouvidoria.model.Sugestao;
+import br.usjt.ouvidoria.model.Postagem;
 import br.usjt.ouvidoria.model.TipoUsuario;
 import br.usjt.ouvidoria.model.Usuario;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="file:WebContent/WEB-INF/spring-context.xml")
 @TransactionConfiguration(defaultRollback=true)
-public class SugestaoDAOTest {
+public class PostagemDAOTest {
 
 	@Autowired
 	AreaDAO areaDAO;
@@ -33,12 +33,12 @@ public class SugestaoDAOTest {
 	UsuarioDAO usuarioDAO;
 	
 	@Autowired
-	SugestaoDAO sugestaoDAO;
+	PostagemDAO sugestaoDAO;
 
 	@Transactional
 	@Test
 	public void salvarTest() {
-		Sugestao sugestao = new Sugestao();
+		Postagem sugestao = new Postagem();
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
@@ -61,14 +61,14 @@ public class SugestaoDAOTest {
 		sugestao.setStatus(Status.ABERTO);
 		sugestao.setUsuario(usuarioSalvo);
 		
-		Sugestao sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
+		Postagem sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
 		Assert.assertNotNull(sugestaoSalvo);
 	}
 	
 	@Transactional
 	@Test
 	public void excluirTest() {
-		Sugestao sugestao = new Sugestao();
+		Postagem sugestao = new Postagem();
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
@@ -91,12 +91,12 @@ public class SugestaoDAOTest {
 		sugestao.setStatus(Status.ABERTO);
 		sugestao.setUsuario(usuarioSalvo);
 		
-		Sugestao sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
+		Postagem sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
 		Long id = sugestaoSalvo.getId();
 		
 		sugestaoDAO.excluir(sugestaoSalvo);
 		
-		Sugestao sugestaoExcluido = sugestaoDAO.buscaPorId(id);
+		Postagem sugestaoExcluido = sugestaoDAO.buscaPorId(id);
 		
 		Assert.assertNull(sugestaoExcluido);
 		

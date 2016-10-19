@@ -5,24 +5,24 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import br.usjt.ouvidoria.model.Sugestao;
+import br.usjt.ouvidoria.model.Postagem;
 
 @Repository
-public class SugestaoDAO {
+public class PostagemDAO {
 
 	@PersistenceContext
 	EntityManager em;
 	
-	public Sugestao salvar(Sugestao sugestao) {
+	public Postagem salvar(Postagem sugestao) {
 		return em.merge(sugestao);
 	}
 
-	public void excluir(Sugestao sugestao) {
+	public void excluir(Postagem sugestao) {
 		em.remove(sugestao);
 	}
 
-	public Sugestao buscaPorId(Long id) {
-		return em.find(Sugestao.class, id);
+	public Postagem buscaPorId(Long id) {
+		return em.find(Postagem.class, id);
 	}
 
 }

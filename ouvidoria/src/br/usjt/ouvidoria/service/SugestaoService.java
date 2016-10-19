@@ -5,26 +5,26 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.usjt.ouvidoria.dao.SugestaoDAO;
-import br.usjt.ouvidoria.model.Sugestao;
+import br.usjt.ouvidoria.dao.PostagemDAO;
+import br.usjt.ouvidoria.model.Postagem;
 
 @Service
 public class SugestaoService {
 
 	@Autowired
-	SugestaoDAO dao;
+	PostagemDAO dao;
 
 	@Transactional
-	public Sugestao salvar(Sugestao sugestao){
+	public Postagem salvar(Postagem sugestao){
 		return dao.salvar(sugestao);
 	}
 	
 	@Transactional
-	public void excluir(Sugestao sugestao) {
+	public void excluir(Postagem sugestao) {
 		dao.excluir(sugestao);
 	}
 	
-	public Sugestao buscarArea(Long id) {
+	public Postagem buscarArea(Long id) {
 		return dao.buscaPorId(id);
 	}
 	

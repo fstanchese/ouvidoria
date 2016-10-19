@@ -14,12 +14,12 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import br.usjt.ouvidoria.dao.AreaDAO;
 import br.usjt.ouvidoria.dao.ComentarioDAO;
-import br.usjt.ouvidoria.dao.SugestaoDAO;
+import br.usjt.ouvidoria.dao.PostagemDAO;
 import br.usjt.ouvidoria.dao.UsuarioDAO;
 import br.usjt.ouvidoria.model.Area;
 import br.usjt.ouvidoria.model.Comentario;
 import br.usjt.ouvidoria.model.Status;
-import br.usjt.ouvidoria.model.Sugestao;
+import br.usjt.ouvidoria.model.Postagem;
 import br.usjt.ouvidoria.model.TipoUsuario;
 import br.usjt.ouvidoria.model.Usuario;
 
@@ -35,7 +35,7 @@ public class ComentarioDAOTest {
 	UsuarioDAO usuarioDAO;
 	
 	@Autowired
-	SugestaoDAO sugestaoDAO;
+	PostagemDAO sugestaoDAO;
 	
 	@Autowired
 	ComentarioDAO comentarioDAO;
@@ -44,7 +44,7 @@ public class ComentarioDAOTest {
 	@Test
 	public void salvarTest() {
 		Comentario comentario = new Comentario();
-		Sugestao sugestao = new Sugestao();
+		Postagem sugestao = new Postagem();
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
@@ -67,7 +67,7 @@ public class ComentarioDAOTest {
 		sugestao.setStatus(Status.ABERTO);
 		sugestao.setUsuario(usuarioSalvo);
 		
-		Sugestao sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
+		Postagem sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
 		
 		comentario.setDataComentario(new Date());
 		comentario.setDescricao("descricao");
@@ -82,7 +82,7 @@ public class ComentarioDAOTest {
 	@Test
 	public void excluirTest() {
 		Comentario comentario = new Comentario();
-		Sugestao sugestao = new Sugestao();
+		Postagem sugestao = new Postagem();
 		Usuario usuario = new Usuario();
 		Area area = new Area();
 		
@@ -105,7 +105,7 @@ public class ComentarioDAOTest {
 		sugestao.setStatus(Status.ABERTO);
 		sugestao.setUsuario(usuarioSalvo);
 		
-		Sugestao sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
+		Postagem sugestaoSalvo = sugestaoDAO.salvar(sugestao);	
 		
 		comentario.setDataComentario(new Date());
 		comentario.setDescricao("descricao");

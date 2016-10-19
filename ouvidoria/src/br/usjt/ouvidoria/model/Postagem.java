@@ -26,8 +26,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="sugestao")
-public class Sugestao implements Serializable {
+@Table(name="postagem")
+public class Postagem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -134,7 +134,7 @@ public class Sugestao implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Sugestao [id=" + id + ", descricao=" + descricao + ", dataSugestao=" + dataSugestao + ", dataMural="
+		return "Postagem [id=" + id + ", descricao=" + descricao + ", dataSugestao=" + dataSugestao + ", dataMural="
 				+ dataMural + ", foto=" + Arrays.toString(foto) + ", status=" + status + ", usuario=" + usuario
 				+ ", area=" + area + "]";
 	}
@@ -155,7 +155,7 @@ public class Sugestao implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Sugestao other = (Sugestao) obj;
+		Postagem other = (Postagem) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
