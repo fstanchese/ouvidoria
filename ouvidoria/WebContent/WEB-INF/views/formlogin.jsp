@@ -1,49 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="pt-br">
-<head>
-<link href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="all">
-<link href="resources/css/styles.css?321" type="text/css" rel="stylesheet">
-<link href="resources/assets/sksmatt-UItoTop-jQuery-Plugin/css/ui.totop.css?<?=rand();?>" rel="stylesheet" >
-<link href="resources/assets/fancybox/jquery.fancybox.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta charset="utf-8">
-<title>Acesso de Usu·rios</title>
-</head>
-<body>
-<c:set var="path" value="${pageContext.request.contextPath}" scope="request" />
-<c:import url="cabecalho.jsp" />
-	<div class="container formlogin">
-	<div class="row">
-		<div class="col-md-offset-5 col-md-4 login">
-			<form name="acesso" action="${path}/efetuaLogin" method="post">
-				<div class="form-group">
-					<label for="login">Usu·rio</label> 
-					<input class="form-control" id="login" name="login" placeholder="Seu login cadastrado"	maxlength="12"  type="text">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Condominio - Login</title>
+		<c:set var="path" value="${pageContext.request.contextPath}" scope="request"/>
+		<style type="text/css">
+			@IMPORT url("${path}/resources/css/bootstrap.min.css");
+			@IMPORT url("${path}/resources/css/bootstrap-theme.min.css");
+			#flogin{
+				width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 100px;
+			}
+			
+			#btn-login{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+	<c:import url="cabecalho.jsp" />
+	
+		<section id="flogin" class="panel panel-primary">
+			
+			<form action="${path}/efetuaLogin" method="post">
+				<div class="panel-heading">
+					Fala Cidad√£o - Login
 				</div>
-				<div class="form-group">
+				
+				<div class="panel-body">
+					<label for="login">Login</label>
+					<input id="login" name="login" size=50 class="form-control" required>
+					
 					<label for="senha">Senha</label>
-					<div class="input-group">
-						<input class="form-control" id="senha" name="senha" placeholder="Sua senha pessoal"  autocomplete="off" type="password">
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary">Entrar</button>
-						</span>
-					</div>
+					<input type="password" id="senha" name="senha" class="form-control" required>
 				</div>
-				<div class="form-group ajuda">
-					<a href="" target="_parent" title="Cadastre-se no nosso site" 	class="btn btn-default">Quero me cadastrar</a> 
-					<a href="" target="_parent" title="Recuperar senha de acesso"	class="btn btn-danger">Esqueci minha senha</a>
+				
+				<div class="panel-footer">
+					<button id="btn-login" class="btn btn-primary">Entrar</button>
 				</div>
 			</form>
-		</div>
-	</div>
-	</div>
-
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="resources/js/scripts.js"></script>
-	<script src="resources/assets/bootstrap/js/bootstrap.min.js"></script>
-	<script	src="resources/assets/sksmatt-UItoTop-jQuery-Plugin/js/jquery.ui.totop.min.js"></script>
-	<script src="resources/assets/sksmatt-UItoTop-jQuery-Plugin/js/easing.js"></script>
-	<script src="resources/assets/fancybox/jquery.fancybox.pack.js"></script>
-</body>
+		</section>
+	</body>
+	<script src="${path}/resources/js/jquery.min.js" 		type="text/javascript"></script>
+	<script src="${path}/resources/js/bootstrap.min.js" 	type="text/javascript"></script>
 </html>

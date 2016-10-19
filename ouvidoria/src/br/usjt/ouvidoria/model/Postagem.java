@@ -51,7 +51,7 @@ public class Postagem implements Serializable {
 	
 	@Column(name="imagem",length = 20971520)
 	@Lob
-	private byte[] foto;
+	private byte[] imagem;
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -100,12 +100,12 @@ public class Postagem implements Serializable {
 		this.dataMural = dataMural;
 	}
 
-	public byte[] getFoto() {
-		return foto;
+	public byte[] getImagem() {
+		return imagem;
 	}
 
-	public void setFoto(byte[] foto) {
-		this.foto = foto;
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
 	}
 
 	public Status getStatus() {
@@ -135,7 +135,7 @@ public class Postagem implements Serializable {
 	@Override
 	public String toString() {
 		return "Postagem [id=" + id + ", descricao=" + descricao + ", dataSugestao=" + dataSugestao + ", dataMural="
-				+ dataMural + ", foto=" + Arrays.toString(foto) + ", status=" + status + ", usuario=" + usuario
+				+ dataMural + ", imagem=" + Arrays.toString(imagem) + ", status=" + status + ", usuario=" + usuario
 				+ ", area=" + area + "]";
 	}
 
